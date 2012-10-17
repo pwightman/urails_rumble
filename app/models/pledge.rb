@@ -1,7 +1,8 @@
 class Pledge < ActiveRecord::Base
   attr_accessible :email
 
-  validates :email, :presence => true
-  validates :email, :uniqueness => true
-  validates :email, :length => 3...400
+  validates :email, :presence => true, 
+                    :uniqueness => true,
+                    :format => {:with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i}
+
 end

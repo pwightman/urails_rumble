@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+
   has_many :authentications
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -17,6 +18,5 @@ class User < ActiveRecord::Base
    def password_required?
      (authentications.empty? || !password.blank?) && super
    end
-  
-  # attr_accessible :title, :body
+
 end
