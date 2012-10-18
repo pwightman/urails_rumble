@@ -7,12 +7,18 @@ gem 'therubyracer'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-github', :git => 'git://github.com/intridea/omniauth-github.git'
+
+gem 'omniauth-twitter'
 group :production do
   gem 'pg'
 end
 
 group :development do
   gem 'sqlite3'
+  gem 'nifty-generators'
 end
 
 
@@ -44,3 +50,5 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+gem "mocha", :group => :test

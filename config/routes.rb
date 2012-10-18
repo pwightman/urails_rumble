@@ -1,7 +1,15 @@
 UrailsRumble::Application.routes.draw do
+  
+
+  devise_for :users, :controllers => {:registrations => 'registrations'}
+
   root :to => "pledges#index"
 
   resources :pledges, only: [:create]
+  
+  resources :authentications
+  match '/auth/:provider/callback' => 'authentications#create'
+    
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
