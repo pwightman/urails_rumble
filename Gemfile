@@ -16,6 +16,8 @@ group :production do
   gem 'pg'
 end
 
+gem "twitter-bootstrap-rails"
+
 group :development do
   gem 'sqlite3'
   gem 'nifty-generators'
