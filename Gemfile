@@ -11,7 +11,6 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github', :git => 'git://github.com/intridea/omniauth-github.git'
 
-gem 'omniauth-twitter'
 group :production do
   gem 'pg'
 end
