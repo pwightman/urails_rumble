@@ -1,7 +1,5 @@
 UrailsRumble::Application.routes.draw do
   
-
-  #get "teams/index"
   resources :teams, only: [:index]
 
   devise_for :users, :controllers => {:registrations => 'registrations'}
