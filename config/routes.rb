@@ -9,6 +9,7 @@ UrailsRumble::Application.routes.draw do
   resources :pledges, only: [:create]
   
   resources :authentications
+
   match '/auth/:provider/callback' => 'authentications#create'
     
 
