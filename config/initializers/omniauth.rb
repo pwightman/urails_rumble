@@ -7,6 +7,5 @@ else
 end
 
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :developer unless Rails.env.production?
   provider :github, client_id, client_secret
 end
