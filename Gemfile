@@ -25,6 +25,11 @@ group :development do
   gem 'nifty-generators'
 end
 
+group :test, :development do
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'spork'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -55,4 +60,4 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
-gem "mocha", :group => :test
+gem "mocha", :group => :test, :require => false
