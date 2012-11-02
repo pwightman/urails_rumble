@@ -1,5 +1,7 @@
 UrailsRumble::Application.routes.draw do
   
+  match "/rules" => "pages#rules", via: :get
+
   resources :teams, only: [:index]
 
   devise_for :users, :controllers => {:registrations => 'registrations'}

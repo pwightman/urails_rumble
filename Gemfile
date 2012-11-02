@@ -4,10 +4,11 @@ gem 'rails', '3.2.8'
 
 gem 'therubyracer'
 gem 'quiet_assets'
-
+gem 'haml'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github', :git => 'git://github.com/intridea/omniauth-github.git'
+
 
 group :production do
   gem 'pg'
@@ -18,6 +19,8 @@ gem "twitter-bootstrap-rails"
 group :development do
   gem 'sqlite3'
   gem 'nifty-generators'
+  gem 'rb-fsevent'
+  gem 'guard-livereload'
 end
 
 group :test, :development do
