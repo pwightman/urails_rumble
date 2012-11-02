@@ -3,21 +3,21 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.8'
 
 gem 'therubyracer'
-gem 'quiet_assets'
 gem 'haml'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github', :git => 'git://github.com/intridea/omniauth-github.git'
-
+gem "twitter-bootstrap-rails"
+gem 'jquery-rails'
+gem "mocha", :group => :test, :require => false
 
 group :production do
   gem 'pg'
 end
 
-gem "twitter-bootstrap-rails"
-
 group :development do
   gem 'sqlite3'
+  gem 'quiet_assets'
   gem 'nifty-generators'
   gem 'rb-fsevent'
   gem 'guard-livereload'
@@ -36,7 +36,3 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
-
-gem 'jquery-rails'
-
-gem "mocha", :group => :test, :require => false
