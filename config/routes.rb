@@ -2,7 +2,9 @@ UrailsRumble::Application.routes.draw do
   
   match "/rules" => "pages#rules", via: :get
 
-  resources :teams, only: [:index]
+  resources :teams, only: [:show, :index, :new, :create] do
+    get :join, on: :member
+  end
 
   devise_for :users, :controllers => {:registrations => 'registrations'}
 
