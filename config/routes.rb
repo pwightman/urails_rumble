@@ -3,10 +3,8 @@ UrailsRumble::Application.routes.draw do
   match "/rules" => "pages#rules", via: :get
 
   resources :teams, only: [:show, :index, :new, :create] do
-    get :join, on: :member
+    get :join, on: :collection
   end
-
-  devise_for :users, :controllers => {:registrations => 'registrations'}
 
   root :to => "pledges#index"
 
@@ -15,7 +13,7 @@ UrailsRumble::Application.routes.draw do
   resources :authentications
 
   match '/auth/:provider/callback' => 'authentications#create'
-    
+  match "/signout" => "authentications#destroy", :as => :signout
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

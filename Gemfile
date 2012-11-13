@@ -4,7 +4,6 @@ gem 'rails', '3.2.8'
 
 gem 'therubyracer'
 gem 'haml'
-gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github', :git => 'git://github.com/intridea/omniauth-github.git'
 gem "twitter-bootstrap-rails"
