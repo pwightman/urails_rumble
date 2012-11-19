@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
 
+gem 'activeadmin'
 gem 'therubyracer'
 gem 'haml'
 gem 'devise'

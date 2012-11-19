@@ -1,5 +1,9 @@
 UrailsRumble::Application.routes.draw do
   
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
   match "/rules" => "pages#rules", via: :get
 
   resources :teams, only: [:show, :index, :new, :create] do
