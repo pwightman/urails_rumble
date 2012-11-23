@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe TeamsController do
+  it "logs in user" do
+    set_auth_headers
+  end
+
   it "create action" do
     post :create, { 
       :team => { 
@@ -15,7 +19,9 @@ describe TeamsController do
   end
 
   it "join action" do
+    raise omniauth_user
     team = Team.create!(:name => "Foo", :password => "bar")
+
     get :join, { id: team.id, password: "bar" }
 
     team.reload
