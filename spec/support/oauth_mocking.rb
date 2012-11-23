@@ -8,6 +8,6 @@ module OauthMocking
   end
 
   def omniauth_user
-    User.find_or_create_by_uid_and_provider(OmniAuth.config.mock_auth[:github][:uid], :github)
+    @omniauth_user ||= User.find_or_create_by_uid_and_provider(OmniAuth.config.mock_auth[:github][:uid], :github)
   end
 end
