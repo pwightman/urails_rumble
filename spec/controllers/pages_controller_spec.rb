@@ -9,4 +9,8 @@ describe PagesController do
     end
   end
 
+  describe "foo" do
+
+  end
+
 end

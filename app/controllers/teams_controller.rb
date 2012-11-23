@@ -4,6 +4,9 @@ class TeamsController < ApplicationController
   end
 
   def create
+    @team = Team.create!(params[:team])
+
+    redirect_to root_path
     # Hoa
   end
 
