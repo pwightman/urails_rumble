@@ -1,5 +1,7 @@
 class Team < ActiveRecord::Base
   has_many :users
-
-  validates :name, :presence => true
+  attr_accessible :name, :password
+  
+  validates :name, :uniqueness => true
+  validates :name, :password, :presence => true
 end

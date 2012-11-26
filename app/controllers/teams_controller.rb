@@ -8,11 +8,26 @@ class TeamsController < ApplicationController
 
     redirect_to root_path
     # Hoa
+    @team = Team.create(params[:team])
+    @user = current_user
+   
+    if @team.save
+         @user.update_attributes(:team_id => @team.id)
+         flash[:notice] = "Successfully created Team."
+         redirect_to teams_path(@team)
+    else
+        @teams = Team.all
+         flash[:alert] = "There was an error in creating your team."
+         render :action => 'new'
+       end
   end
 
   def new
-    redirect_to root_path if current_user.nil?
+    # redirect_to root_path if current_user.nil?
     # Hoa
+    @teams = Team.all
+    @team = Team.new
+    
   end
 
   def join
