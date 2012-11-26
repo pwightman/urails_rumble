@@ -4,9 +4,6 @@ class TeamsController < ApplicationController
   end
 
   def create
-    @team = Team.create!(params[:team])
-
-    redirect_to team_path(@team)
     # Hoa
     @team = Team.create(params[:team])
     @user = current_user
@@ -14,12 +11,13 @@ class TeamsController < ApplicationController
     if @team.save
          @user.update_attributes(:team_id => @team.id)
          flash[:notice] = "Successfully created Team."
-         redirect_to teams_path(@team)
+         redirect_to team_path(@team)
     else
         @teams = Team.all
          flash[:alert] = "There was an error in creating your team."
          render :action => 'new'
        end
+   
   end
 
   def new
