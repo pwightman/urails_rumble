@@ -6,7 +6,7 @@ UrailsRumble::Application.routes.draw do
 
   match "/rules" => "pages#rules", via: :get
 
-  resources :teams, only: [:show, :index, :new, :create] do
+  resources :teams, only: [:show, :index, :new, :create, :update] do
     get :join, on: :member
   end
 

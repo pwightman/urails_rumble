@@ -1,0 +1,24 @@
+<h2><%= @team.name %></h2>
+ 
+<%= form_for @team do |f| %>
+
+  <div><%= f.label :name %>
+  <%= f.text_field :name, :value => @team.name %></div>
+
+  <% @team.users.each do |user| %>
+    <div><%= user.email %></div>
+  <% end %>
+
+  <br />
+
+  <div><%= f.label :password %>
+  <%= f.text_field :password, :value => @team.password %></div>
+
+  <div><%= f.label :bit_bucket %>
+  <%= f.text_field :bit_bucket, :value => @team.bit_bucket %></div>
+
+  <div><%= f.label :heroku %>
+  <%= f.text_field :heroku, :value => @team.heroku %></div>
+
+  <div><%= f.submit "Save" %></div>
+<% end %>

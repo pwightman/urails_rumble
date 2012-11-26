@@ -6,7 +6,7 @@ class TeamsController < ApplicationController
   def create
     @team = Team.create!(params[:team])
 
-    redirect_to root_path
+    redirect_to team_path(@team)
     # Hoa
   end
 
@@ -28,4 +28,18 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     # Landon
   end
+
+  def update
+    @team = Team.find(params[:id])
+    @team.update_attributes(team_params)
+    @team.save!
+    redirect_to team_path(@team)
+  end
+
+  private
+    
+    def team_params
+      params[:team].slice :name, :password, :heroku, :bit_bucket
+    end
+
 end
