@@ -1,20 +1,12 @@
 class User < ActiveRecord::Base
   belongs_to :team
-  has_many :authentications
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
-  # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :rememberable, :trackable, :validatable
-
-  # Setup accessible (or protected) attributes for your model
+  attr_accessible :name, :provider, :team_id, :uid
   
-  def apply_omniauth(omniauth)
-     self.email = omniauth.info.email if email.blank?
-     authentications.build(:provider => omniauth.provider, :uid => omniauth.uid)
-   end
-
-   def password_required?
-     (authentications.empty? || !password.blank?) && super
-   end
-
+  def self.create_with_omniauth(auth)
+    create! do |user|
+      user.provider = auth["provider"]
+      user.uid = auth["uid"]
+      user.name = auth["info"]["name"]
+    end
+  end
 end
