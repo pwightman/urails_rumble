@@ -15,7 +15,7 @@ describe "Sign in and team creation" do
 
   it "allows logged in users to visit teams/new" do
     login_with_oauth
-
+    visit "/teams/new"
     current_path.should == new_team_path
   end
 end

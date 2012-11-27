@@ -1,4 +1,8 @@
 class TeamsController < ApplicationController
+
+  before_filter :authenticate!, only: [:new, :create, :show]
+  before_filter :forward_if_has_team, only: [:new]
+
   def index
     @teams = Team.all
   end
@@ -50,7 +54,9 @@ class TeamsController < ApplicationController
   end
 
   private
-    
+    def forward_if_has_team
+       redirect_to team_path(current_user.team) and return if current_user && current_user.team
+    end    
     def team_params
       params[:team].slice :name, :password, :heroku, :bit_bucket
     end
