@@ -18,4 +18,9 @@ describe "Sign in and team creation" do
     visit "/teams/new"
     current_path.should == new_team_path
   end
+
+  it "redirects to /teams/new after login" do
+    login_with_oauth
+    current_path.should == new_team_path
+  end
 end

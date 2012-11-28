@@ -29,6 +29,17 @@ describe "teams requests" do
     end
   end
 
+  describe "new action" do
+    it "forwards if user already belongs to team" do
+      @team.users << omniauth_user
+      login_with_oauth
+
+      visit new_team_path
+
+      current_path.should == team_path(@team)
+    end
+  end
+
   it "saves bitbucket/heroku/password attributes" do
     @team.users << omniauth_user
     login_with_oauth
