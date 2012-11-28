@@ -2,23 +2,52 @@
  
 <%= form_for @team do |f| %>
 
+  <h3>Team Settings</h3>
   <div><%= f.label :name %>
   <%= f.text_field :name, :value => @team.name %></div>
-
-  <% @team.users.each do |user| %>
-    <div><%= user.email %></div>
-  <% end %>
-
-  <br />
 
   <div><%= f.label :password %>
   <%= f.text_field :password, :value => @team.password %></div>
 
+  <br />
+  <br />
+  <h1>4 Steps to Happiness</h1>
+  <p>Make sure you complete the checklist below before the competition begins, otherwise a public shaming and/or disqualification may ensue. 
+  </p>
+  <p>Kidding.</p>
+  <p>But seriously.</p>
+  <br />
+
+  <h3>1. Invite more team members </h3>
+  <p> Give those you want on your team the password to your team and they can sign up from the main page.</p>
+  <% users = @team.users.all %>
+  <p>You can invite up to <%= 4 - users.size %> more team members</p> 
+  <h5>Team members</h5>
+  <ol>
+    <% 4.times do |i| %>
+      <% user = users[i] %>
+      <% if user %>
+        <li><%= user.username %></li>
+      <% else %>
+        <li>_______________________________</li>
+      <% end %>
+    <% end %>
+  </ol>
+
+  <br />
+  <h3>2. Create a BitBucket repository for you team </h3>
+  <p>Go to <%= link_to "bitbucket.org", "http://bitbucket.org", target: "_blank" %> and create a respository for your team. Paste the URL to your repository here.</p>
   <div><%= f.label :bit_bucket %>
   <%= f.text_field :bit_bucket, :value => @team.bit_bucket %></div>
 
+  <h3>3. Add "URailsRumble" BitBucket user to the repository</h3>
+  <p>To prevent cheating, we require all teams to add the URailsRumble user to the repository so we can monitor commits. No funny business, we promise.</p>
+
+  <h3>4. Create an app on Heroku for your site</h3>
+  <p>Checkout this <%= link_to "Heroku quickstart guide", "https://devcenter.heroku.com/articles/quickstart" %> to get going. Paste your app URL here.</p>
   <div><%= f.label :heroku %>
   <%= f.text_field :heroku, :value => @team.heroku %></div>
 
-  <div><%= f.submit "Save" %></div>
+  <h3>Be sure to click save!</h3>
+  <div><%= f.submit "Save", class: "btn btn-custom btn-large" %></div>
 <% end %>

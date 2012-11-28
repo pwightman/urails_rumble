@@ -7,12 +7,21 @@
 	height:300px;
 	margin-top:25px;
 	text-align:center;
+	padding:15px;
 }
 #join{
 	float:left;
 	height:300px;
 	margin-top:25px;
 	text-align:center;
+	padding:15px;
+}
+
+form.edit_team {
+  label {
+    display:inline-block;
+    width:80px;
+  }
 }
 
 

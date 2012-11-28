@@ -10,7 +10,8 @@ describe Team do
 
     it "is valid when name is non-nil" do
       team.name = "Foobar"
-      team.valid?.should == true
+      team.password = "Bleh"
+      team.save.should == true
     end
   end
 
