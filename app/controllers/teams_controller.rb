@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
 
-  before_filter :authenticate!, only: [:new, :create, :show]
+  before_filter :authenticate!, only: [:new, :create, :show, :join]
   before_filter :forward_if_has_team, only: [:new]
 
   def index
@@ -33,12 +33,21 @@ class TeamsController < ApplicationController
   end
 
   def join
-    @team = Team.find(params[:id])
-    # Kingsley adds logic for adding member to team
-    # Use 'current_user' as the logged-in user to assign
-    # to this team.
-    # Be sure to to error check things like:
-    #  * There isn't more than 4 people on the team
+    @team = Team.find(params[:team][:id])
+
+    if @team.password != params[:team][:password]
+      flash[:error] = "Incorrect password"
+      redirect_to new_team_path and return
+    end
+
+    if @team.users.size >= 4
+      flash[:error] = "The team you selected is full."
+      redirect_to new_team_path and return
+    end
+
+    @team.users << current_user
+
+    redirect_to team_path(@team)
   end
 
   def show

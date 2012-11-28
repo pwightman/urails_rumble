@@ -67,7 +67,6 @@ describe "teams requests" do
   end
 
   it "successfully joins a team" do
-
     login_with_oauth
 
     within "#join" do
@@ -83,9 +82,41 @@ describe "teams requests" do
   end
 
   it "fails to join a team when an incorrect password is used" do
-    # Use almost same thing as test above, but change to match this
-    # use case (i.e. fill in the wrong password, check that current_path is
-    # still teams_new)
+    login_with_oauth
+
+    within "#join" do
+      select @team.name, from: "team_id"
+      fill_in "team_password", with: "some_wrong_password"
+      click_on "Join a Team"
+    end
+
+    # Something like /teams/3
+    current_path.should == new_team_path
+
+    omniauth_user.team.should be_nil
+
+    page.has_content?("Incorrect password").should == true
+  end
+
+  it "fails to join a team when it is full" do
+    4.times do |i|
+      @team.users << User.create!(uid: "foobar_#{i}", email: "foodbar_#{i}@foo.com")
+    end
+
+    login_with_oauth
+
+    within "#join" do
+      select @team.name, from: "team_id"
+      fill_in "team_password", with: @team.password
+      click_on "Join a Team"
+    end
+
+    # Something like /teams/3
+    current_path.should == new_team_path
+
+    omniauth_user.team.should be_nil
+
+    page.has_content?("The team you selected is full").should == true
   end
 end
 
