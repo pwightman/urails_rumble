@@ -2,6 +2,7 @@ class TeamsController < ApplicationController
 
   before_filter :authenticate!, only: [:new, :create, :show, :join]
   before_filter :forward_if_has_team, only: [:new]
+  before_filter :authenticate_current_user!, only: [:show, :update]
 
   def index
     @teams = Team.all
@@ -54,7 +55,6 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     @user = current_user
 
-    redirect_to root_path unless @team.users.include? current_user
     # Landon
   end
 
@@ -71,6 +71,11 @@ class TeamsController < ApplicationController
     end    
     def team_params
       params[:team].slice :name, :password, :heroku, :bit_bucket
+    end
+
+    def authenticate_current_user!
+      @team = Team.find(params[:id])
+      redirect_to root_path and return unless @team.users.include?(current_user)
     end
 
 end
