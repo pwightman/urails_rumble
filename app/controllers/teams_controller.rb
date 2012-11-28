@@ -39,6 +39,9 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
+    @user = current_user
+
+    redirect_to root_path unless @team.users.include? current_user
     # Landon
   end
 
