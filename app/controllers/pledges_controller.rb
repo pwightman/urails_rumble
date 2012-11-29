@@ -1,5 +1,6 @@
 class PledgesController < ApplicationController
   def index
+    redirect_to current_user.team if current_user && current_user.team
     @pledge = Pledge.new
   end
 

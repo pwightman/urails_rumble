@@ -1,19 +1,19 @@
 	<div id="join" class="span5">
-		<h2>Join A Team</h2>
+		<h2>Join a Team</h2>
 		<%= form_for(@team, :url => { :action => :join }, :method => :get) do |f| %>
 		<%= f.label :name %>:
 		<%= f.select(:id, options_from_collection_for_select(@teams, :id, :name)) %></br>
-		<%= f.text_field :password, placeholder: "Password" %><br />
+		<%= f.password_field :password, placeholder: "Password" %><br />
 		<%= f.submit "Join a Team", class: "btn btn-custom" %>
 		<% end %>
 	
 	</div>
 	
 	<div id="create" class="span5">
-		<h2>Create A Team</h2>
+		<h2>Create a Team</h2>
 		<%= form_for @team  do |f| %>
 		  <%= f.text_field :name, placeholder: "Name" %><br />
-		  <%= f.text_field :password, placeholder: "Password" %><br />
+		  <%= f.password_field :password, placeholder: "Password" %><br />
 		  <%= f.submit "Create Team", class: "btn btn-custom" %>
 		<% end %>
 	</div>
