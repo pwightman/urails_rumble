@@ -7,7 +7,9 @@
   <%= f.text_field :name, :value => @team.name %></div>
 
   <div><%= f.label :password %>
-  <%= f.text_field :password, :value => @team.password %></div>
+    <input type="button" class="btn btn-custom" id="show_password_button" value="Show Password" />
+    <span style="display:none;" id="show_password_span"><%= @team.password %></span>
+  </div>
 
   <br />
   <br />
@@ -19,9 +21,9 @@
   <br />
 
   <h3>1. Invite more team members </h3>
-  <p> Give those you want on your team the password to your team and they can sign up from the main page.</p>
+  <p> Give those you want on your team the password above and they can sign up from the main page.</p>
   <% users = @team.users.all %>
-  <p>You can invite up to <%= 4 - users.size %> more team members</p> 
+  <p>You can invite up to <%= 4 - users.size %> more team members.</p> 
   <h5>Team members</h5>
   <ol>
     <% 4.times do |i| %>
@@ -35,7 +37,7 @@
   </ol>
 
   <br />
-  <h3>2. Create a BitBucket repository for you team </h3>
+  <h3>2. Create a BitBucket repository for your team </h3>
   <p>Go to <%= link_to "bitbucket.org", "http://bitbucket.org", target: "_blank" %> and create a respository for your team. Paste the URL to your repository here.</p>
   <div><%= f.label :bit_bucket %>
   <%= f.text_field :bit_bucket, :value => @team.bit_bucket %></div>

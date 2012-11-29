@@ -1,3 +1,9 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$ ->
+  $("#show_password_button").click ->
+    span = $("#show_password_span")
+    if span.css("display") == "none"
+      span.css("display", "inline")
+      $(this).val("Hide Password")
+    else
+      span.css("display", "none")
+      $(this).val("Show Password")

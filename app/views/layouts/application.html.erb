@@ -30,15 +30,7 @@
           <a class="brand" href="/">URails Rumble</a>
           <div class="container nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Teams", teams_path  %></li>
-              <li><%= link_to "Rules", rules_path %></li>
-              <% if !Rails.env.production? # We'll need to change this later when logins are active %>
-                <% if current_user %>
-                  <li><%= link_to "Sign out", signout_path, method: :delete %></li>
-                <% else %>
-                  <li><%= link_to "Sign in with GitHub", "/auth/github"  %></li>
-                <% end %>
-              <% end %>
+              <%= render "layouts/nav" %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

@@ -14,28 +14,28 @@
 ActiveRecord::Schema.define(:version => 20121129001031) do
 
   create_table "authentications", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "provider"
-    t.string   "uid"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer   "user_id"
+    t.string    "provider"
+    t.string    "uid"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
   end
 
   create_table "pledges", :force => true do |t|
-    t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string    "email"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
   end
 
   add_index "pledges", ["email"], :name => "index_pledges_on_email", :unique => true
 
   create_table "teams", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "password"
-    t.text     "heroku"
-    t.text     "bit_bucket"
+    t.string    "name"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
+    t.string    "password"
+    t.text      "heroku"
+    t.text      "bit_bucket"
   end
 
   create_table "users", :force => true do |t|
