@@ -20,9 +20,9 @@
 
   <h3>1. Invite more team members </h3>
   <p> Give those you want on your team the password to your team and they can sign up from the main page.</p>
-  <h5>Teammates</h5>
   <% users = @team.users.all %>
-  <p>You can invite <%= 4 - users.size %> more teammates</p> 
+  <p>You can invite up to <%= 4 - users.size %> more team members</p> 
+  <h5>Team members</h5>
   <ol>
     <% 4.times do |i| %>
       <% user = users[i] %>
