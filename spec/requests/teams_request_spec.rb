@@ -47,20 +47,17 @@ describe "teams requests" do
     visit team_path(@team)
 
     new_name = "Elephant"
-    new_password = "Bleh"
     new_bitbucket = "my_dog_has_fleas"
     new_heroku = "Harry Potter"
 
     within ".edit_team" do
       fill_in "team_name", with: new_name
-      fill_in "team_password", with: new_password
       fill_in "team_bit_bucket", with: new_bitbucket
       fill_in "team_heroku", with: new_heroku
       click_on "Save"
     end
 
     @team.reload
-    @team.password.should == new_password
     @team.name.should == new_name
     @team.heroku.should == new_heroku
     @team.bit_bucket.should == new_bitbucket
@@ -100,7 +97,7 @@ describe "teams requests" do
 
   it "fails to join a team when it is full" do
     4.times do |i|
-      @team.users << User.create!(uid: "foobar_#{i}", email: "foodbar_#{i}@foo.com")
+      @team.users << User.create!(uid: i, provider: "github", email: "foodbar_#{i}@foo.com")
     end
 
     login_with_oauth

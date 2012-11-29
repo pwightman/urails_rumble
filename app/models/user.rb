@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   belongs_to :team
   attr_accessible :name, :provider, :team_id, :uid, :email
+
+  validates :uid, :uniqueness => true
+  validates :provider, :presence => true
   
   def self.create_with_omniauth(auth)
     create! do |user|
