@@ -7,6 +7,12 @@ describe "Sign in and team creation" do
     page.has_content?("Sign out").should == true
   end
 
+  it "save proper fields on login" do
+    login_with_oauth
+    omniauth_user.username.should == "testuser"
+    omniauth_user.email.should == "foo@bar.com"
+  end
+
   it "redirects away from teams/new if not logged in" do
     visit "/teams/new"
 

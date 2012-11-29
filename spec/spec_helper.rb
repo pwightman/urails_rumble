@@ -40,7 +40,7 @@ RSpec.configure do |config|
 
 OmniAuth.config.test_mode = true
   
-omniauth_hash = { 'uid' => '12345', 'nickname' => 'testuser', 'credentials' => { 'token' => 'umad', 'secret' => 'bro?' } }
+omniauth_hash = { 'uid' => '12345', info: { 'nickname' => 'testuser', 'email' => "foo@bar.com" }, 'credentials' => { 'token' => 'umad', 'secret' => 'bro?' } }
   
 OmniAuth.config.add_mock(:github, omniauth_hash)
 

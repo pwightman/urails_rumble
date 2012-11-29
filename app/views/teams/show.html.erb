@@ -23,14 +23,16 @@
   <h5>Teammates</h5>
   <% users = @team.users.all %>
   <p>You can invite <%= 4 - users.size %> more teammates</p> 
-  <% 4.times do |i| %>
-    <% user = users[i] %>
-    <% if user %>
-      <div><%= user.id %></div>
-    <% else %>
-      <div>_______________________________</div>
+  <ol>
+    <% 4.times do |i| %>
+      <% user = users[i] %>
+      <% if user %>
+        <li><%= user.username %></li>
+      <% else %>
+        <li>_______________________________</li>
+      <% end %>
     <% end %>
-  <% end %>
+  </ol>
 
   <br />
   <h3>2. Create a BitBucket repository for you team </h3>
