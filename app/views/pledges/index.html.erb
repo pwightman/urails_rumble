@@ -1,15 +1,11 @@
 <h1 class="rumble">URails Rumble!</h1>
 
 <p>
-A competition for Ruby on Rails developers and designers. Groups of 1 - 4 have 48 hours to build an awesome website, from Dec 18th - Dec 20th. The vivid details are on the <%= link_to "rules page", rules_path %>. Enter your email below and we'll notify you when registrations have opened (expected to be sometime near the end of November). This also helps us get an idea of how many will be competing, so please sign up if you plan to/would like to compete!
-</p>
+A competition for Ruby on Rails developers and designers. Groups of 1 - 4 have 48 hours to build an awesome website, from Dec 18th - Dec 20th. The vivid details are on the <%= link_to "rules page", rules_path %>. Sign in and create your team to get started!</p>
 
 <br />
 <div style="text-align:center;">
-<%= form_for @pledge do |f| %>
-  <%= f.text_field :email, placeholder: "Email" %>
-  <%= submit_tag "GO FIGHT WIN", class: "btn btn-custom" %>
-<% end %>
+<%= link_to "Sign in with Github", "/auth/github", class: "btn btn-large btn-custom" %>
 </div>
 
 <% if @pledge.errors.present? %>
