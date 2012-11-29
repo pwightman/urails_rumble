@@ -1,12 +1,11 @@
-%li= link_to "Teams", teams_path
+-# %li= link_to "Teams", teams_path
 %li= link_to "Rules", rules_path
-- if !Rails.env.production? # We'll need to change this later 
-  - if current_user
-    - if current_user.team
-      %li= link_to "My Team", current_user.team
-    - else
-      %li= link_to "Create or Join a Team", new_team_path
-    %li= link_to "Sign out", signout_path, method: :delete
+- if current_user
+  - if current_user.team
+    %li= link_to "My Team", current_user.team
   - else
-    %li= link_to "Sign in with GitHub", "/auth/github"
+    %li= link_to "Create or Join a Team", new_team_path
+  %li= link_to "Sign out", signout_path, method: :delete
+- else
+  %li= link_to "Sign in with GitHub", "/auth/github"
 

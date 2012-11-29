@@ -1,19 +1,16 @@
 <h1>Teams</h1>
-
-<p><em>Registration has not begun, so no teams have been created yet.</em></p>
-
-<ol>
+<ul>
   <% @teams.each do |team| %>
     <li>
-      <%= team.name %>
+    <h4>Team <%= team.name %> Members</h4>
       <ul>
-	<% team.users.each do |user| %>
-	  <li>
-	    <%= user.username %>
-	  </li>
-	<% end %>
+        <% team.users.each do |user| %>
+          <li>
+            <%= user.username %>
+          </li>
+        <% end %>
       </ul>
     </li>
   <% end %>
-</ol>
+</ul>
 
