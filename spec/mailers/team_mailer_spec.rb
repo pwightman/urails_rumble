@@ -2,8 +2,8 @@ require "spec_helper"
 
 describe TeamMailer do
   describe "send_invite" do
-    let(:user) { Factory(:user)}
-    let(:mail) { TeamMailer.send_invite("test@example.com", user) }
+    let(:team) { Factory(:team)}
+    let(:mail) { TeamMailer.send_invite("test@example.com", team) }
 
     it "renders the headers" do
       mail.subject.should eq("Urails Rumble")

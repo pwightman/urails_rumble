@@ -18,7 +18,7 @@ RSpec.configure do |config|
   # config.mock_with :flexmock
   # config.mock_with :rr
 
-  # Mailer Macros creates last_email and reset_email
+  # Mailer Macros creates sent_email, last_email and reset_email
   config.include(MailerMacros)
   config.before(:each) { reset_email }
 
