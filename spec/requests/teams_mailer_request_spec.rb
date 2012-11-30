@@ -7,6 +7,7 @@ describe "TeamMailers" do
     visit team_path(team)
     click_button "Invite"
     sent_email.should be_empty
+    page.should have_content("The email address you entered is not valid")
   end
 
   it "sends an email when email field is entered" do
@@ -14,7 +15,8 @@ describe "TeamMailers" do
     visit team_path(team)
     fill_in "email", with: email
     click_button "Invite"
-    sent_email.should include(email)
+    sent_email.should_not be_empty
+    page.should have_content("Invite has been sent")
   end
 
   it "does not send an invalid email" do
@@ -23,5 +25,6 @@ describe "TeamMailers" do
     fill_in "email", with: email
     click_button "Invite"
     sent_email.should_not include(email)
+    page.should have_content("The email address you entered is not valid")
   end
 end

@@ -73,11 +73,12 @@ class TeamsController < ApplicationController
 
   def mailer
     email = params[:email]
-    if TeamMailer.send_invite(email, current_user)
+    if valid_email?(email)
+      TeamMailer.send_invite(email, current_user).deliver
       flash[:success] = "Invite has been sent"
       redirect_to :back
     else
-      flash[:failure] = "An error occured"
+      flash[:failure] = "The email address you entered is not valid"
       redirect_to :back
     end
   end

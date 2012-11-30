@@ -2,12 +2,13 @@ require "spec_helper"
 
 describe TeamMailer do
   describe "send_invite" do
-    let(:mail) { TeamMailer.send_invite }
+    let(:user) { Factory(:user)}
+    let(:mail) { TeamMailer.send_invite("test@example.com", user) }
 
     it "renders the headers" do
-      mail.subject.should eq("Send invite")
-      mail.to.should eq(["to@example.org"])
-      mail.from.should eq(["from@example.com"])
+      mail.subject.should eq("Urails Rumble")
+      mail.to.should eq(["test@example.com"])
+      mail.from.should eq(["urails@urails-rumble.herokuapp.com"])
     end
 
     it "renders the body" do
