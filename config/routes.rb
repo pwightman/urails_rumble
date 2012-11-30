@@ -5,6 +5,7 @@ UrailsRumble::Application.routes.draw do
   #devise_for :admin_users, ActiveAdmin::Devise.config
 
   match "/rules" => "pages#rules", via: :get
+  match "/teams/mailer" => "teams#mailer"
 
 
   resources :teams, only: [:show, :index, :new, :create, :update] do

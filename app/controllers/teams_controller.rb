@@ -71,6 +71,10 @@ class TeamsController < ApplicationController
     redirect_to team_path(@team)
   end
 
+  def mailer
+    redirect_to :back
+  end
+
   private
     def forward_if_has_team
        redirect_to team_path(current_user.team) and return if current_user && current_user.team
