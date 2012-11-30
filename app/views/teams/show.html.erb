@@ -1,5 +1,8 @@
-<h2>Team <%= @team.name %></h2>
-<%= button_to "Leave Team", leave_teams_path, :class => "btn btn-custom", :method => :get %> 
+<h2 class="team-name">Team <%= @team.name %></h2>
+<%= link_to "Leave Team", leave_teams_path, :class => "leave-team-button btn btn-custom" %> 
+<br />
+<br />
+
 <%= form_for @team do |f| %>
 
   <h3>Team Settings</h3>

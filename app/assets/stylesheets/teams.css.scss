@@ -13,12 +13,22 @@ ul, li {
 	text-align:center;
 	padding:15px;
 }
+
 #join{
 	float:left;
 	height:300px;
 	margin-top:25px;
 	text-align:center;
 	padding:15px;
+}
+
+.leave-team-button {
+  float:right;
+  width:100px;
+}
+
+h2.team-name {
+  display:inline;
 }
 
 form.edit_team {
