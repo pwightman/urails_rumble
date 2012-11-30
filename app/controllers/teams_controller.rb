@@ -65,16 +65,22 @@ class TeamsController < ApplicationController
   end
 
   def update
-    @team = Team.find(params[:id])
-    @team.update_attributes(team_params)
-    @team.save!
-    redirect_to team_path(@team)
+    # need if statement here because Send Invite is inside team form
+    if params[:commit] == "Send Invite"
+      mailer
+    else
+      @team = Team.find(params[:id])
+      @team.update_attributes(team_params)
+      @team.save!
+      redirect_to team_path(@team)
+    end
   end
 
   def mailer
     email = params[:email]
+    team = Team.find(params[:team_id])
     if valid_email?(email)
-      TeamMailer.send_invite(email, current_user).deliver
+      TeamMailer.send_invite(email, team).deliver
       flash[:success] = "Invite has been sent"
       redirect_to :back
     else
