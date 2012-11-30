@@ -1,5 +1,6 @@
 require 'spec_helper'
 
+=begin
 describe "Pledge views" do
   it "renders pledges at the home page" do
     visit "/"
@@ -49,3 +50,4 @@ describe "Pledge views" do
     Pledge.where(email: "foo@foo.com").first.should_not == nil
   end
 end
+=end
