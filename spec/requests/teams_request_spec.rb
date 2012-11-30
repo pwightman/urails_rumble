@@ -40,6 +40,17 @@ describe "teams requests" do
     end
   end
 
+  describe "User can successfully leave a team" do
+    it "Allows users to leave a team" do
+      @team.users << omniauth_user
+      login_with_oauth
+      visit team_path(@team)
+      click_on "Leave Team"
+      current_path.should == new_team_path
+      current_user.team.should == nil
+    end
+  end
+
   it "saves bitbucket/heroku/password attributes" do
     @team.users << omniauth_user
     login_with_oauth

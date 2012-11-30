@@ -9,6 +9,7 @@ UrailsRumble::Application.routes.draw do
 
   resources :teams, only: [:show, :index, :new, :create, :update] do
     get :join, on: :collection
+    get :leave, on: :collection
   end
 
   root :to => "pledges#index"

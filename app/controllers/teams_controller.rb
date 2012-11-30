@@ -51,6 +51,12 @@ class TeamsController < ApplicationController
     redirect_to team_path(@team)
   end
 
+  def leave
+    current_user.team = nil
+    current_user.save
+    redirect_to new_team_path
+  end
+
   def show
     @team = Team.find(params[:id])
     @user = current_user
