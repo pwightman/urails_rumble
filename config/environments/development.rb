@@ -14,10 +14,10 @@ UrailsRumble::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # User letter opener to open email in browser
-  config.action_mailer.delivery_method = :letter_opener if Rails.env.development?
+  config.action_mailer.delivery_method = :letter_opener
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log

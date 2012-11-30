@@ -72,7 +72,14 @@ class TeamsController < ApplicationController
   end
 
   def mailer
-    redirect_to :back
+    email = params[:email]
+    if TeamMailer.send_invite(email, current_user)
+      flash[:success] = "Invite has been sent"
+      redirect_to :back
+    else
+      flash[:failure] = "An error occured"
+      redirect_to :back
+    end
   end
 
   private

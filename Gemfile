@@ -15,6 +15,7 @@ group :production do
 end
 
 group :development do
+  gem "letter_opener"
   gem 'sqlite3'
   gem 'quiet_assets'
   gem 'nifty-generators'
@@ -23,7 +24,6 @@ group :development do
 end
 
 group :test, :development do
-  gem 'letter_opener'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'capybara'

@@ -37,13 +37,6 @@
     <% end %>
   </ol>
 
-  <%= form_tag controller: "teams", action: "mailer" do %>
-    <%= label_tag(:email, "Email") %>
-    <%= text_field_tag(:email) %>
-    <%= submit_tag("Send Invite") %>
-  <% end %>
-
-
   <br />
   <h3>2. Create a BitBucket repository for your team </h3>
   <p>Go to <%= link_to "bitbucket.org", "http://bitbucket.org", target: "_blank" %> and create a respository for your team. Paste the URL to your repository here.</p>
@@ -60,4 +53,10 @@
 
   <h3>Be sure to click save!</h3>
   <div><%= f.submit "Save", class: "btn btn-custom btn-large" %></div>
+<% end %>
+
+<%= form_tag teams_mailer_path, method: "get" do %>
+  <%= label_tag(:email, "Email") %>
+  <%= text_field_tag(:email) %>
+  <%= submit_tag("Send Invite") %>
 <% end %>

@@ -6,7 +6,7 @@ describe "TeamMailers" do
   it "does not send an email when email field is blank" do
     visit team_path(team)
     click_button "Invite"
-    ActionMailer::Base.deliveries.should be_empty
+    sent_email.should be_empty
   end
 
   it "sends an email when email field is entered" do
@@ -14,7 +14,7 @@ describe "TeamMailers" do
     visit team_path(team)
     fill_in "email", with: email
     click_button "Invite"
-    ActionMailer::Base.deliveries.should include(email)
+    sent_email.should include(email)
   end
 
   it "does not send an invalid email" do
@@ -22,6 +22,6 @@ describe "TeamMailers" do
     visit team_path(team)
     fill_in "email", with: email
     click_button "Invite"
-    ActionMailer::Base.deliveries.should_not include(email)
+    sent_email.should_not include(email)
   end
 end
