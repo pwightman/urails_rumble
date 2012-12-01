@@ -41,6 +41,12 @@
     <% end %>
   </ol>
 
+  <%= fields_for teams_mailer_path, method: "get", remote: true do %>
+    <%= text_field_tag(:email, "", placeholder: "Email") %>
+    <%= hidden_field_tag(:team_id, @team.id) %>
+    <%= submit_tag("Send Invite", class: "btn btn-custom") %>
+  <% end %>
+
   <br />
   <h3>2. Create a BitBucket repository for your team </h3>
   <p>Go to <%= link_to "bitbucket.org", "http://bitbucket.org", target: "_blank" %> and create a respository for your team. Paste the URL to your repository here.</p>
@@ -58,3 +64,4 @@
   <h3>Be sure to click save!</h3>
   <div><%= f.submit "Save", class: "btn btn-custom btn-large" %></div>
 <% end %>
+
