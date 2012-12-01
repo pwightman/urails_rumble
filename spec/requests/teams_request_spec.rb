@@ -47,7 +47,8 @@ describe "teams requests" do
       visit team_path(@team)
       click_on "Leave Team"
       current_path.should == new_team_path
-      current_user.team.should == nil
+      omniauth_user.reload
+      omniauth_user.team.should == nil
     end
   end
 
