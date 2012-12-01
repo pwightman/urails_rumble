@@ -42,7 +42,7 @@
   </ol>
 
   <%= fields_for teams_mailer_path, method: "get", remote: true do %>
-    <%= text_field_tag (:email) %>
+    <%= text_field_tag(:email, "", placeholder: "Email") %>
     <%= hidden_field_tag(:team_id, @team.id) %>
     <%= submit_tag("Send Invite", class: "btn btn-custom") %>
   <% end %>
