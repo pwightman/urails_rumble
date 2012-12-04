@@ -7,3 +7,4 @@ notifications:
       - parkerwightman@gmail.com
       - landonwilkins@gmail.com
 script: bundle exec rspec spec
+
